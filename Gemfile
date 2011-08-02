@@ -9,10 +9,12 @@ gem 'mysql2', '~> 0.2.6'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
+#  gem 'webrat'
 end
 
 group :test do
   gem 'rspec-rails', '2.6.1'
+#  gem 'webrat'
 end
 # Use unicorn as the web server
 # gem 'unicorn'
