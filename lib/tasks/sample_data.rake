@@ -12,8 +12,8 @@ namespace :db do
     admin = User.create!(:first_name => "Jimmy",
                  :last_name => "Kung",
                  :email => "jimmy.kung@apb.org",
-                 :password => "apb0000",
-                 :password_confirmation => "apb0000")
+                 :password => "000000",
+                 :password_confirmation => "000000")
     admin.toggle!(:admin)
     
     example_user = User.create!(:first_name => "Example",
@@ -33,6 +33,13 @@ namespace :db do
                    :password => password,
                    :password_confirmation => password)
     end
+
+    10.times do |m|
+        User.all(:limit => 3).each do |user|
+            user.microposts.create!(:content => "blah blah blah...#{m+1}")
+        end
+    end
+
   end
 end
 

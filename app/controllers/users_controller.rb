@@ -1,18 +1,17 @@
 class UsersController < ApplicationController
-  #before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
   before_filter :authenticate, :only => [:edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
-  before_filter :admin_user,   :only => [:index, :destroy]
-  #before_filter :admin_user,   :only => :destroy
+  before_filter :admin_user,   :only => [:destroy]
 
   def index
-    #@users = User.all
+   # @users = User.all
     @users = User.paginate(:page => params[:page], :per_page => 10 )
     @title = "All Users"
   end
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(:page => params[:page])
     @title = @user.first_name
   end
 
@@ -55,10 +54,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-    def authenticate
-      deny_access unless signed_in?
-    end
 
     def correct_user
       @user = User.find(params[:id])

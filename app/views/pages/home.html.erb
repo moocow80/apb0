@@ -1,20 +1,35 @@
-<h1>Home</h1>
-<p>
-    This is the home page for the Austin Pro Bono.
-</p>
-    
-<p>
-    Welcome to where good work is done. This site connects businesses that want to help with nonprofits that need help. 
-    Our singular purpose is to Do. Good. Work. and help get more of it done!
-</p>
-    
-<p>
-    If you are a business looking to give back to the community that has given you so much this is the place. 
-    If you are a nonprofit that is tired of calling all over town looking for help this is the place. 
-    If you are looking to do business with the companies that make Austin such an amazing place to live and work this is the place. 
-</p>
-<p>
-    This is AustinProBono - Do. Good. Work.
-</p>
+<% if signed_in? %>
+  <table class="front" summary="For signed-in users">
+    <tr>
+      <td class="main">
+        <h1 class="micropost">What's up?</h1>
+        <%= render 'shared/micropost_form' %>
+        <%= render 'shared/feed' %>
+      </td>
+      <td class="sidebar round">
+        <%= render 'shared/user_info' %>
+      </td>
+    </tr>
+  </table>
+<% else %>
+    <h1>Home</h1>
+    <p>
+        This is the home page for the Austin Pro Bono.
+    </p>
+        
+    <p>
+        Welcome to where good work is done. This site connects businesses that want to help with nonprofits that need help. 
+        Our singular purpose is to Do. Good. Work. and help get more of it done!
+    </p>
+        
+    <p>
+        If you are a business looking to give back to the community that has given you so much this is the place. 
+        If you are a nonprofit that is tired of calling all over town looking for help this is the place. 
+        If you are looking to do business with the companies that make Austin such an amazing place to live and work this is the place. 
+    </p>
+    <p>
+        This is AustinProBono - Do. Good. Work.
+    </p>
 
-<%= link_to "Sign up now!", signup_path , :class => "signup_button round" %>
+    <%= link_to "Sign up now!", signup_path , :class => "signup_button round" %>
+<% end %>
